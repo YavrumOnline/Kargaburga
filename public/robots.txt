@@ -1,0 +1,28 @@
+# robots.txt for Ali Kaptan Mimari Tasarım Eğitim
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Block specific paths if needed (currently none)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://kargaburga.com/sitemap.xml
+
+# Crawl delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
+# Specific rules for different bots (optional)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

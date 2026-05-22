@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Ana Sayfa -->
+  <url>
+    <loc>https://kargaburga.com/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Değerler Sayfası -->
+  <url>
+    <loc>https://kargaburga.com/#values</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Kurslar Sayfası -->
+  <url>
+    <loc>https://kargaburga.com/#courses</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- AutoCAD Kursu -->
+  <url>
+    <loc>https://kargaburga.com/#courses/autocad</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Revit Kursu -->
+  <url>
+    <loc>https://kargaburga.com/#courses/revit</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- 3ds Max + V-Ray Kursu -->
+  <url>
+    <loc>https://kargaburga.com/#courses/3dsmax-vray</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Rhino + V-Ray Kursu -->
+  <url>
+    <loc>https://kargaburga.com/#courses/rhino-vray</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Grasshopper Kursu -->
+  <url>
+    <loc>https://kargaburga.com/#courses/grasshopper</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Photoshop Kursu -->
+  <url>
+    <loc>https://kargaburga.com/#courses/photoshop</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Illustrator Kursu -->
+  <url>
+    <loc>https://kargaburga.com/#courses/illustrator</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Ekip Sayfası -->
+  <url>
+    <loc>https://kargaburga.com/#team</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- İletişim Sayfası -->
+  <url>
+    <loc>https://kargaburga.com/#contact</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Giriş Sayfası -->
+  <url>
+    <loc>https://kargaburga.com/#login</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+</urlset>
