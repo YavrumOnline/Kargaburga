@@ -1,0 +1,8 @@
+@import 'tailwindcss' source(none);
+@source '../**/*.{js,ts,jsx,tsx}';
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  8%, 25%, 42% { opacity: 0; }
+  16%, 33%, 50% { opacity: 1; }
+}
