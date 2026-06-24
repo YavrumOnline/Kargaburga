@@ -1,6 +1,0 @@
-# Netlify/Vercel redirects
-/sitemap.xml  /sitemap.xml  200
-/robots.txt   /robots.txt   200
-
-# SPA fallback
-/*  /index.html  200

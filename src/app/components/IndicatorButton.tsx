@@ -14,7 +14,7 @@ interface IndicatorButtonProps {
   darkMode?: boolean;
   showTooltipBox?: boolean;
   showAddButtonTooltipBox?: boolean;
-  addButtonRef?: React.RefObject<HTMLDivElement>;
+  addButtonRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 export function IndicatorButton({ height = 48, onContactModeToggle, onHeldChange, onAddButtonPress, isAddButtonExpanded, onSlideSelect, darkMode, showTooltipBox, showAddButtonTooltipBox, addButtonRef }: IndicatorButtonProps) {

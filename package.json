@@ -5,30 +5,25 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
+    "embla-carousel-react": "8.6.0",
+    "lucide-react": "0.487.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "@googlemaps/js-api-loader": "^2.0.2",
-    "@types/leaflet": "^1.9.21",
-    "clsx": "2.1.1",
-    "embla-carousel-react": "8.6.0",
-    "leaflet": "^1.9.4",
-    "lucide-react": "0.487.0",
-    "react-leaflet": "^5.0.0",
-    "tailwind-merge": "3.2.0"
+    "react-router-dom": "^6.30.4"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "4.7.0",
     "tailwindcss": "4.1.12",
-    "vite": "6.3.5"
+    "typescript": "^6.0.3",
+    "vite": "^6.4.3"
   },
-  "pnpm": {
-    "overrides": {
-      "vite": "6.3.5"
-    }
-  }
+  "packageManager": "pnpm@11.9.0"
 }

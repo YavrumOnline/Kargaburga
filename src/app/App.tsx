@@ -10,6 +10,7 @@ import { Login } from '@/app/topics/Login';
 import { Navbar } from '@/app/components/Navbar';
 import { CaroContain, CaroContainRef } from '@/app/components/CaroContain';
 import { NavigationController, useNavigation } from '@/app/navigation/NavigationController';
+import { pathForTopic, resolvePath, COURSE_ROUTES, TOPIC_META } from '@/app/navigation/routes';
 import { Lamine } from '@/app/components/Lamine';
 import { Grain } from '@/app/components/Grain';
 import { SearchToggle } from '@/app/components/SearchToggle';
@@ -27,11 +28,11 @@ import {
 } from '@/data/courses';
 
 // Import team portraits for preloading
-import tayfunPortrait from 'figma:asset/353f7bbc9a58d9d817acba041851e8d892982597.png';
-import aybukePortrait from 'figma:asset/b17fcf59424bc06fed28c8ca6fc072e4232a7819.png';
-import erkutPortrait from 'figma:asset/2a27b2f2da065602d4d833171f3af27ef8817dff.png';
-import erdalPortrait from 'figma:asset/f095dff089d692b42a164aa5bdceea0da78aaed1.png';
-import aliPortrait from 'figma:asset/31b0a01767073a2f31532def23b68175258757c6.png';
+import tayfunPortrait from 'figma:asset/353f7bbc9a58d9d817acba041851e8d892982597.webp';
+import aybukePortrait from 'figma:asset/b17fcf59424bc06fed28c8ca6fc072e4232a7819.webp';
+import erkutPortrait from 'figma:asset/2a27b2f2da065602d4d833171f3af27ef8817dff.webp';
+import erdalPortrait from 'figma:asset/f095dff089d692b42a164aa5bdceea0da78aaed1.webp';
+import aliPortrait from 'figma:asset/31b0a01767073a2f31532def23b68175258757c6.webp';
 
 function AppContent() {
   const backgroundColor = LIGHT_MODE.BACKGROUND;
@@ -48,6 +49,7 @@ function AppContent() {
     setContactView,
     navigateToNextTopic,
     navigateToPrevTopic,
+    setActiveTopicId,
     markUserHasSwiped,
     hasUserSwiped,
     hasUserPressedAddButton,
@@ -79,38 +81,74 @@ function AppContent() {
   const HORIZONTAL_SWIPE_COOLDOWN = 400; // Reduced to match gesture cooldown
   const loadingGestureStartRef = useRef<{ x: number; y: number } | null>(null);
 
-  // Update document title based on active topic and slide for SEO
+  // Sync document title, meta description, and URL with active topic/slide for SEO.
+  // This is the single place where app navigation state becomes a real, crawlable URL.
   useEffect(() => {
-    const topicTitles: Record<string, string> = {
-      values: 'Kargaburga | İşin Uzmanından, İşin Kendisi',
-      courses: 'Kargaburga | Kurslarımız',
-      team: 'Kargaburga | Ekibimiz',
-      contact: 'Kargaburga | İletişim',
-      login: 'Kargaburga | Giriş',
-    };
-
-    const courseTitles: Record<string, string> = {
-      0: 'AutoCAD Kursu',
-      1: 'Revit Kursu',
-      2: '3ds Max + V-Ray Kursu',
-      3: 'Rhino + V-Ray Kursu',
-      4: 'Grasshopper Kursu',
-      5: 'Photoshop Kursu',
-      6: 'Illustrator Kursu',
-    };
-
-    let title = topicTitles[activeTopicId] || 'Kargaburga | İşin Uzmanından, İşin Kendisi';
+    let title = TOPIC_META[activeTopicId].title;
+    let description = TOPIC_META[activeTopicId].description;
+    let path = pathForTopic(activeTopicId);
 
     if (activeTopicId === 'courses') {
       const slideIndex = activeSlideIndexByTopic[activeTopicId] || 0;
-      const courseName = courseTitles[slideIndex];
-      if (courseName) {
-        title = `Kargaburga | ${courseName}`;
+      const courseRoute = COURSE_ROUTES.find((r) => r.slideIndex === slideIndex);
+      if (courseRoute) {
+        title = `Kargaburga | ${courseRoute.course.title.join(' ')} Kursu`;
+        description = courseRoute.metaDescription;
+        path = pathForTopic('courses', courseRoute.slug);
       }
     }
 
     document.title = title;
+
+    let metaDescTag = document.querySelector('meta[name="description"]');
+    if (!metaDescTag) {
+      metaDescTag = document.createElement('meta');
+      metaDescTag.setAttribute('name', 'description');
+      document.head.appendChild(metaDescTag);
+    }
+    metaDescTag.setAttribute('content', description);
+
+    let canonicalTag = document.querySelector('link[rel="canonical"]');
+    if (!canonicalTag) {
+      canonicalTag = document.createElement('link');
+      canonicalTag.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalTag);
+    }
+    canonicalTag.setAttribute('href', `https://kargaburga.com${path}`);
+
+    // Update the URL without reloading the page or fighting the gesture/carousel
+    // logic - this purely mirrors state into the address bar (and history stack).
+    if (window.location.pathname !== path) {
+      window.history.pushState(null, title, path);
+    }
   }, [activeTopicId, activeSlideIndexByTopic]);
+
+  // On first mount, read the URL and jump straight to the matching topic/course.
+  // This is what makes a direct visit to e.g. /kurslar/autocad land in the right place.
+  useEffect(() => {
+    const { topicId, slideIndex } = resolvePath(window.location.pathname);
+    if (topicId !== activeTopicId) {
+      setActiveTopicId(topicId);
+    }
+    if (slideIndex !== undefined) {
+      setActiveSlideForTopic('courses', slideIndex);
+    }
+    // Intentionally run only once on mount - this is purely for initial deep-linking.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Support browser back/forward buttons.
+  useEffect(() => {
+    const handlePopState = () => {
+      const { topicId, slideIndex } = resolvePath(window.location.pathname);
+      setActiveTopicId(topicId);
+      if (slideIndex !== undefined) {
+        setActiveSlideForTopic('courses', slideIndex);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [setActiveTopicId, setActiveSlideForTopic]);
 
   // Function to dismiss loading screen
   const dismissLoadingScreen = useCallback(() => {
@@ -541,23 +579,7 @@ function AppContent() {
             touchAction: 'none',
           }}
         >
-          {/* Lamine gradient overlay - visible version for loading screen */}
-          <div
-            style={{
-              position: 'fixed',
-              inset: 0,
-              pointerEvents: 'none',
-              userSelect: 'none',
-              zIndex: 0,
-              backgroundImage: `
-                radial-gradient(at 20% 30%, rgba(80, 25, 0, 0.15) 0px, transparent 50%),
-                radial-gradient(at 70% 40%, rgba(255, 120, 0, 0.15) 0px, transparent 55%),
-                radial-gradient(at 45% 80%, rgba(255, 200, 100, 0.12) 0px, transparent 50%)
-              `,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          />
+          <Lamine />
           <Grain />
           <DotGrid darkMode={false} activeTopicId="values" />
           <img

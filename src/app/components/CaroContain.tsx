@@ -41,7 +41,7 @@ interface CaroContainParams {
   disableVerticalNavigation?: boolean;
   showIndicatorTooltipBox?: boolean;
   showAddButtonTooltipBox?: boolean;
-  addButtonRef?: React.RefObject<HTMLDivElement>;
+  addButtonRef?: React.RefObject<HTMLDivElement | null>;
 }
 
 export const CaroContain = forwardRef<CaroContainRef, CaroContainParams>(({

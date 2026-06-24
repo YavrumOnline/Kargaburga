@@ -11,13 +11,27 @@ export function DotGrid({ darkMode, activeTopicId }: { darkMode: boolean; active
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
     
-    // Set canvas size to match window
+    // Set canvas size to match the currently visible viewport.
+    // We deliberately use window.visualViewport instead of window.innerWidth/
+    // innerHeight: on iOS Safari, innerHeight reflects the layout viewport
+    // (effectively the "toolbar hidden" size), which can be taller than what's
+    // actually visible when the address bar/toolbar is showing. visualViewport
+    // tracks the real, currently-visible area, and - critically - it fires its
+    // own 'resize' event when the toolbar shows/hides, which window's 'resize'
+    // event does not reliably do on iOS.
+    const getViewportSize = () => ({
+      width: window.visualViewport?.width ?? window.innerWidth,
+      height: window.visualViewport?.height ?? window.innerHeight,
+    });
+
     const updateSize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const { width, height } = getViewportSize();
+      canvas.width = width;
+      canvas.height = height;
     };
     updateSize();
     window.addEventListener('resize', updateSize);
+    window.visualViewport?.addEventListener('resize', updateSize);
     
     // Get theme color
     const themeColor = TOPIC_THEME_COLORS[activeTopicId as keyof typeof TOPIC_THEME_COLORS];
@@ -75,6 +89,7 @@ export function DotGrid({ darkMode, activeTopicId }: { darkMode: boolean; active
     
     return () => {
       window.removeEventListener('resize', updateSize);
+      window.visualViewport?.removeEventListener('resize', updateSize);
       cancelAnimationFrame(animationFrame);
     };
   }, [darkMode, activeTopicId]);
@@ -86,8 +101,8 @@ export function DotGrid({ darkMode, activeTopicId }: { darkMode: boolean; active
         position: 'fixed',
         top: 0,
         left: 0,
-        width: '100%',
-        height: '100%',
+        right: 0,
+        bottom: 0,
         pointerEvents: 'none',
         zIndex: 1,
       }}

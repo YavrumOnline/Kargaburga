@@ -2,11 +2,11 @@ import { DARK_MODE, LIGHT_MODE } from '@/constants/colors';
 import { SlideContainer } from '@/app/components/SlideContainer';
 import { generateNeumorphicShadow, DEFAULT_NEUMORPHIC_RATIOS } from '@/app/utils/neumorphicUtils';
 import { TRANSITIONS } from '@/constants/styles';
-import tayfunPortrait from 'figma:asset/353f7bbc9a58d9d817acba041851e8d892982597.png';
-import aybukePortrait from 'figma:asset/b17fcf59424bc06fed28c8ca6fc072e4232a7819.png';
-import erkutPortrait from 'figma:asset/2a27b2f2da065602d4d833171f3af27ef8817dff.png';
-import erdalPortrait from 'figma:asset/f095dff089d692b42a164aa5bdceea0da78aaed1.png';
-import aliPortrait from 'figma:asset/31b0a01767073a2f31532def23b68175258757c6.png';
+import tayfunPortrait from 'figma:asset/353f7bbc9a58d9d817acba041851e8d892982597.webp';
+import aybukePortrait from 'figma:asset/b17fcf59424bc06fed28c8ca6fc072e4232a7819.webp';
+import erkutPortrait from 'figma:asset/2a27b2f2da065602d4d833171f3af27ef8817dff.webp';
+import erdalPortrait from 'figma:asset/f095dff089d692b42a164aa5bdceea0da78aaed1.webp';
+import aliPortrait from 'figma:asset/31b0a01767073a2f31532def23b68175258757c6.webp';
 
 export function Team({ darkMode }: { darkMode?: boolean }) {
   const teamMembers = [

@@ -19,7 +19,7 @@ export function HorizontalPicker({ items, onSelect, height = 60, darkMode }: Hor
   const startXRef = useRef(0);
   const startTimeRef = useRef(0);
   const currentXRef = useRef(0);
-  const transitionTimeoutRef = useRef<NodeJS.Timeout>();
+  const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const itemWidth = height * 3; // Each item is 3x the height
   const gap = 0; // No gap between items for simpler calculations

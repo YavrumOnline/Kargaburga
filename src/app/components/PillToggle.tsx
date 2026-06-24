@@ -101,7 +101,7 @@ export function PillToggle({
   const [showExpandBounce, setShowExpandBounce] = useState(false);
   const [showCollapseBounce, setShowCollapseBounce] = useState(false);
   const [dotsAnimationKey, setDotsAnimationKey] = useState(0);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const initialPositionRef = useRef<{ x: number; startIndex: number } | null>(null);
   const prevIsHeldRef = useRef(false);
   const prevDotsCountRef = useRef(dotsCount);
@@ -179,7 +179,7 @@ export function PillToggle({
     }
   };
   
-  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerDown = (e: React.PointerEvent<HTMLElement>) => {
     if (mode === 'indicator') {
       // Capture pointer to ensure we receive pointerup even if released outside element
       e.currentTarget.setPointerCapture(e.pointerId);
@@ -188,7 +188,7 @@ export function PillToggle({
     }
   };
   
-  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLElement>) => {
     if (mode === 'indicator' && isHeld && dotsCount && dotsCount > 0 && initialPositionRef.current && onSlideSelect) {
       // Calculate delta from initial position
       const deltaX = e.clientX - initialPositionRef.current.x;
@@ -213,7 +213,7 @@ export function PillToggle({
     }
   };
   
-  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerUp = (e: React.PointerEvent<HTMLElement>) => {
     if (mode === 'indicator') {
       // Release pointer capture
       if (e.currentTarget.hasPointerCapture(e.pointerId)) {
@@ -224,7 +224,7 @@ export function PillToggle({
     }
   };
   
-  const handlePointerCancel = (e: React.PointerEvent<HTMLDivElement>) => {
+  const handlePointerCancel = (e: React.PointerEvent<HTMLElement>) => {
     if (mode === 'indicator') {
       // Release pointer capture
       if (e.currentTarget.hasPointerCapture(e.pointerId)) {
@@ -438,7 +438,14 @@ export function PillToggle({
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerCancel}
-      ref={ref}
+      // `Element` is dynamically 'button' | 'div' (see isInteractive above).
+      // TypeScript's JSX checker requires a ref type satisfying BOTH
+      // HTMLButtonElement and HTMLDivElement simultaneously for a
+      // union-tag element, which is structurally inexpressible (it's an
+      // impossible intersection, not a union). `ref` is attached but never
+      // read (no `ref.current` usage in this file), so this is safe.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
     >
       {/* Light mode shadow layer */}
       <div
