@@ -653,8 +653,8 @@ function AppContent() {
               style={{ 
                 zIndex: 2, 
                 pointerEvents: 'none',
-                paddingTop: `${(kargaSize + navbarPadding * 2) / 2}px`,
-                paddingBottom: `${(kargaSize + navbarPadding * 2) / 2}px`,
+                paddingTop: `calc(${(kargaSize + navbarPadding * 2) / 2}px + env(safe-area-inset-top))`,
+                paddingBottom: `calc(${(kargaSize + navbarPadding * 2) / 2}px + env(safe-area-inset-bottom))`,
               }}
             >
               {/* Backdrop for click-outside detection - only when search is expanded */}
