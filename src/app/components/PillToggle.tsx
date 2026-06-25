@@ -272,7 +272,7 @@ export function PillToggle({
           userSelect: 'none',
           WebkitUserSelect: 'none',
           WebkitTouchCallout: 'none',
-          transition: 'gap 0.2s ease-in-out',
+          transition: 'gap 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
         {Array.from({ length: dotsCount }).map((_, index) => {
@@ -304,7 +304,7 @@ export function PillToggle({
                 height: `${dotSize}px`,
                 borderRadius: '50%',
                 backgroundColor: isActive ? effectiveTextColor : `${effectiveTextColor}40`,
-                transition: 'background-color 0.5s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out, filter 0.2s ease-in-out',
+                transition: 'background-color 0.5s ease-in-out, width 0.4s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.2s ease-in-out',
                 animation,
                 filter: isHeld ? `drop-shadow(0 0 ${shadowBlur}px rgba(0, 0, 0, 0.5))` : 'none',
                 userSelect: 'none',
