@@ -14,6 +14,7 @@ import { pathForTopic, resolvePath, COURSE_ROUTES, TOPIC_META } from '@/app/navi
 import { Lamine } from '@/app/components/Lamine';
 import { Grain } from '@/app/components/Grain';
 import { SearchToggle } from '@/app/components/SearchToggle';
+import { Lock } from 'lucide-react';
 import { LIGHT_MODE, DARK_MODE } from '@/constants/colors';
 import { findBestMatchingCourse } from '@/app/utils/courseSearch';
 import logoImage from 'figma:asset/d6700bdde9369bcbe482a5c7165c7c654a42697e.png';
@@ -621,6 +622,32 @@ function AppContent() {
             <strong style={{ display: 'block', marginBottom: '0.5rem', fontSize: '16px' }}>Kargaburga'ya Hoş Geldiniz!</strong>
             Eğitimlerimiz, dünya çapındaki projelerin tasarım ve uygulama süreçlerini yöneten uzmanlar tarafından doğrudan sahadaki tecrübeyle verilmektedir. Bizimle sadece bir katılım belgesi değil; profesyonel birikiminizle örtüşen gerçek bir yetkinlik kazanırsınız.
           </p>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0.5rem',
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            <Lock size={20} color="#3A3A3A" strokeWidth={1.75} />
+            <p
+              style={{
+                fontSize: '13px',
+                fontWeight: 400,
+                color: '#3A3A3A',
+                textAlign: 'center',
+                maxWidth: '500px',
+                padding: '0 2rem',
+                lineHeight: '1.5',
+                margin: 0,
+              }}
+            >
+              Gizliliğinize değer veriyoruz: Hiçbir kullanıcı verisi toplamıyor, çerez (cookie) kullanmıyoruz.
+            </p>
+          </div>
         </div>
       )}
       
