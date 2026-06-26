@@ -359,6 +359,19 @@ function AppContent() {
     setActiveSlideForTopic(activeTopicId, slideIndex);
   }, [activeTopicId, setActiveSlideForTopic]);
 
+  // Called by Courses right when its crossfade actually swaps content (not
+  // when the press happens - the swap is delayed by the fade-out). This is
+  // what tells the height system "the content just changed, measure again" -
+  // without it, collapsing back to the short description leaves the card
+  // stuck at the curriculum's taller height, since nothing else prompts a
+  // fresh measurement at the right moment.
+  const handleCoursesContentSwapped = useCallback(() => {
+    const coursesRef = topicWrapperRefs.current['courses'];
+    if (coursesRef) {
+      coursesRef.remeasureCurrentSlide(true);
+    }
+  }, []);
+
   // Handle remeasure request from CaroContain (on resize)
   const handleRemeasureRequest = useCallback(() => {
     if (activeTopicId === 'courses' && isAddButtonPressed && caroContainRef.current) {
@@ -463,7 +476,7 @@ function AppContent() {
             onSlideChange={handleSlideChange}
             isDraggingDisabled={isIndicatorHeld}
           >
-            <Courses darkMode={darkMode} isAddButtonPressed={isAddButtonPressed} />
+            <Courses darkMode={darkMode} isAddButtonPressed={isAddButtonPressed} onContentSwapped={handleCoursesContentSwapped} />
           </TopicWrapper>
         );
       case 'team':

@@ -12,7 +12,15 @@ import { SlideContainer } from '@/app/components/SlideContainer';
 import { PriceToggle } from '@/app/components/PriceToggle';
 import { TRANSITIONS } from '@/constants/styles';
 
-export function Courses({ darkMode, isAddButtonPressed }: { darkMode?: boolean; isAddButtonPressed?: boolean }) {
+export function Courses({
+  darkMode,
+  isAddButtonPressed,
+  onContentSwapped,
+}: {
+  darkMode?: boolean;
+  isAddButtonPressed?: boolean;
+  onContentSwapped?: () => void;
+}) {
   // Crossfade between the short description and the full curriculum instead
   // of an instant swap. `displayedPressed` lags behind the real prop during
   // the fade-out half of the transition, so the OLD content (and its layout:
@@ -32,10 +40,16 @@ export function Courses({ darkMode, isAddButtonPressed }: { darkMode?: boolean; 
       // Double rAF: guarantees the browser has painted the opacity:0 state
       // from the swap before we flip to opacity:1, so the fade-in transition
       // actually has something to animate from instead of the two style
-      // changes getting batched into a single, invisible jump.
+      // changes getting batched into a single, invisible jump. This also
+      // means the new content has definitely been committed to the DOM by
+      // this point, which is why onContentSwapped (the height remeasure
+      // trigger) lives here too rather than right after setDisplayedPressed -
+      // calling it too early would just re-measure the old, not-yet-replaced
+      // content.
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           setContentOpacity(1);
+          onContentSwapped?.();
         });
       });
     }, FADE_MS);
