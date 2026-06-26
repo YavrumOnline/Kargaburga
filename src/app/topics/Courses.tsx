@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import {
   autocadCourse,
   revitCourse,
@@ -9,9 +10,39 @@ import {
 } from '@/data/courses';
 import { SlideContainer } from '@/app/components/SlideContainer';
 import { PriceToggle } from '@/app/components/PriceToggle';
-import { getHeadingStyle, getBodyTextStyle, TRANSITIONS } from '@/constants/styles';
+import { TRANSITIONS } from '@/constants/styles';
 
 export function Courses({ darkMode, isAddButtonPressed }: { darkMode?: boolean; isAddButtonPressed?: boolean }) {
+  // Crossfade between the short description and the full curriculum instead
+  // of an instant swap. `displayedPressed` lags behind the real prop during
+  // the fade-out half of the transition, so the OLD content (and its layout:
+  // padding/maxWidth) stays on screen, fading to opacity 0, before we swap to
+  // the NEW content and fade it back in.
+  const [displayedPressed, setDisplayedPressed] = useState(isAddButtonPressed);
+  const [contentOpacity, setContentOpacity] = useState(1);
+  const FADE_MS = 250;
+
+  useEffect(() => {
+    if (isAddButtonPressed === displayedPressed) return;
+
+    setContentOpacity(0);
+
+    const swapTimer = setTimeout(() => {
+      setDisplayedPressed(isAddButtonPressed);
+      // Double rAF: guarantees the browser has painted the opacity:0 state
+      // from the swap before we flip to opacity:1, so the fade-in transition
+      // actually has something to animate from instead of the two style
+      // changes getting batched into a single, invisible jump.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setContentOpacity(1);
+        });
+      });
+    }, FADE_MS);
+
+    return () => clearTimeout(swapTimer);
+  }, [isAddButtonPressed, displayedPressed]);
+
   const slides = [
     autocadCourse,
     revitCourse,
@@ -29,10 +60,17 @@ export function Courses({ darkMode, isAddButtonPressed }: { darkMode?: boolean; 
       {slides.map((slide, index) => (
         <SlideContainer
           key={index}
-          padding={isAddButtonPressed ? '0' : '2rem'}
+          padding={displayedPressed ? '0' : '2rem'}
         >
-          <div style={{ maxWidth: isAddButtonPressed ? '100%' : '42rem', width: '100%' }}>
-            {!isAddButtonPressed && (
+          <div
+            style={{
+              maxWidth: displayedPressed ? '100%' : '42rem',
+              width: '100%',
+              opacity: contentOpacity,
+              transition: `opacity ${FADE_MS}ms ease-in-out`,
+            }}
+          >
+            {!displayedPressed && (
               <>
                 <h2
                   style={{
@@ -88,7 +126,7 @@ export function Courses({ darkMode, isAddButtonPressed }: { darkMode?: boolean; 
             )}
 
             {/* Müfredat Section - Only show when + button is pressed and curriculum exists */}
-            {isAddButtonPressed && slide.curriculum && (
+            {displayedPressed && slide.curriculum && (
               <div
                 className="curriculum-scroll"
                 style={{
