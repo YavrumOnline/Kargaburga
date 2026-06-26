@@ -91,7 +91,7 @@ export function Navbar({
                         width: '60%', 
                         height: '60%',
                         objectFit: 'contain',
-                        filter: (darkMode || isActive) ? 'invert(1)' : 'none',
+                        filter: (darkMode || isActive) ? 'invert(100%)' : 'invert(0%)',
                         transition: 'filter 0.5s ease-in-out',
                       }} 
                     />
