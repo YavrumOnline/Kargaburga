@@ -98,4 +98,28 @@
     <priority>0.5</priority>
   </url>
   
+  <!-- Leblebi -->
+  <url>
+    <loc>https://kargaburga.com/leblebi</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Leblebi -->
+  <url>
+    <loc>https://kargaburga.com/leblebi/privacy</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Leblebi -->
+  <url>
+    <loc>https://kargaburga.com/leblebi/terms</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
