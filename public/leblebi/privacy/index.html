@@ -39,22 +39,20 @@ footer { margin-top:4em; color:var(--muted); font-size:.9rem; }
 <p>Leblebi is published by <strong>Kargaburga</strong>. Contact: <strong>tayfun.bilgi@gmail.com</strong></p>
 <h2>The short version</h2>
 <p>Leblebi has no account of its own, never asks you to type your name or email, and contains no analytics or crash-reporting service. Your puzzle progress is stored <strong>on your device</strong>.</p>
-<p>Two optional things involve other companies: <strong>advertising</strong>, and <strong>Google Play Games</strong> if you choose to sign in. If you do sign in, the app shows your Play Games name and photo on your own Home screen and backs up your progress to your Google account — and sends neither to anyone.</p>
+<p>Two optional things involve other companies: <strong>advertising</strong>, and <strong>Google Play Games</strong> if you choose to sign in. If you do sign in, the app shows your Play Games name on your own Home and Account screens and backs up your progress to your Google account — and sends neither to anyone.</p>
 <h2>What Leblebi stores on your device</h2>
 <p>The app saves your game progress locally so you can close it and come back. That save contains:</p>
-<ul><li>which puzzle you are on, your points total, and how many puzzles you have completed</li><li>which days you completed the daily puzzle</li><li>the puzzle you are part-way through, including words found and hints used</li><li>your settings: language, sound on/off, haptics on/off, and which ambient sound you chose</li></ul>
+<ul><li>which puzzle you are on, your points total, and how many puzzles you have completed</li><li>which days you completed the daily puzzle</li><li>the puzzle you are part-way through, including words found and hints used</li><li>your settings: language, the sound level, haptics on/off, background motion, which ambient sound you chose, whether reminders are on and at what time</li><li>which of the game's one-time tips you have already seen</li></ul>
 <p>It contains <strong>no name, no email address, no contacts, no location, and no device identifier</strong>.</p>
 <p>Puzzles and dictionary definitions are included inside the app, so playing does not require an internet connection and nothing about which words you look up is ever transmitted.</p>
 <h2>Google Play Games Services — optional</h2>
 <p>If you sign in to Google Play Games, the app uses it for two purposes.</p>
 <p><strong>1. Backing up your progress.</strong> The save described above is written to Google's Saved Games, so your progress survives a lost or replaced phone. Only that progress data is read and written.</p>
-<p><strong>2. Showing you who is signed in.</strong> The Home screen displays:</p>
-<ul><li>your <strong>Play Games display name</strong>, exactly as you set it</li><li>your <strong>Play Games profile photo</strong>, downloaded from Google when the screen is shown</li></ul>
-<p>Both are used <strong>only to draw that one card on your own screen</strong>. They are:</p>
-<ul><li><strong>never written to your save file</strong>, on the device or in the cloud</li><li><strong>never sent anywhere</strong> by the app — not to the developer, not to the ad services, not to anyone</li><li><strong>held in memory only</strong>, fetched fresh each time you open the app and gone when you close it</li></ul>
-<p>If you are not signed in, or you have no profile photo, the app shows an initial in a circle and the word "Player" instead. It never asks you to sign in to continue.</p>
-<p>The app does <strong>not</strong> read your friends list, your achievements, or your email address.</p>
-<p>Signing in is optional. Declining it costs you cloud backup and the name and photo on the card, and nothing else.</p>
+<p><strong>2. Showing you who is signed in.</strong> The Home and Account screens display your <strong>Play Games display name</strong>, exactly as you set it. It is:</p>
+<ul><li><strong>never written to your save file</strong>, on the device or in the cloud</li><li><strong>never sent anywhere</strong> by the app — not to the developer, not to the ad services, not to anyone</li><li><strong>held in memory only</strong>, read fresh each time you open the app and gone when you close it</li></ul>
+<p>If you are not signed in, the app shows no name. It never asks you to sign in to continue.</p>
+<p>The app does <strong>not</strong> read your profile photo, your friends list, your achievements, or your email address.</p>
+<p>Signing in is optional. Declining it costs you cloud backup and the name on the screen, and nothing else. <strong>Play without an account</strong> on the Account screen sets the account aside on this device; <strong>Delete account</strong> erases your progress on this device and the copy in your Google account, and then sets the account aside.</p>
 <p>Google's handling of your Play Games account is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
 <h2>Advertising</h2>
 <p>Leblebi is free and shows ads. There are two places: a full-screen ad after finishing a puzzle, and an optional video you can choose to watch in exchange for a hint. <strong>You are never required to watch an ad to keep playing.</strong></p>
@@ -70,14 +68,16 @@ footer { margin-top:4em; color:var(--muted); font-size:.9rem; }
 <p>Where the GDPR, UK GDPR or similar law applies, the app shows Google's <strong>User Messaging Platform</strong> consent form before any ad service starts, and asks you to choose. You can reopen that choice at any time from the app's Settings screen.</p>
 <p><strong>Withdrawing takes effect immediately.</strong> If you reopen that choice and decline, the app stops requesting ads there and then, for the rest of the session and every session after it, rather than waiting until you next open it.</p>
 <p><strong>If you decline, no ads are requested at all.</strong> Because hints are funded by an optional video, declining also means hints are unavailable — the same position a player without an internet connection is in. Nothing else about the game changes.</p>
+<h2>Reminders</h2>
+<p>Settings has a reminder switch, off by default. Switched on, the app schedules one notification a day on your device, at the time you choose, saying that today's daily puzzle is waiting. It is scheduled locally, uses no server, and sends nothing anywhere.</p>
 <h2>Permissions</h2>
-<p>Leblebi requests exactly one Android permission of its own:</p>
-<ul><li><strong><code>VIBRATE</code></strong> — the small tap you feel when you touch a control. You can switch it off in Settings. It works entirely on your device and sends nothing anywhere.</li></ul>
+<p>Leblebi requests two Android permissions of its own:</p>
+<ul><li><strong><code>VIBRATE</code></strong> — the small tap you feel when you touch a control. You can switch it off in Settings. It works entirely on your device and sends nothing anywhere.</li><li><strong><code>POST_NOTIFICATIONS</code></strong> — the reminder above, only if you switch it on.</li></ul>
 <p>Network access comes from the advertising and Play Games components described above.</p>
 <h2>Children</h2>
 <p>Leblebi is a word and dictionary game and contains no content directed at children, no chat, and no way for players to contact each other. It is not knowingly directed at children under 13, and the developer does not knowingly collect personal information from them.</p>
 <h2>Data deletion</h2>
-<ul><li><strong>On your device:</strong> uninstalling Leblebi removes the local save.</li><li><strong>In the cloud:</strong> if you used Play Games, delete the saved game from your Google account at <a href="https://myaccount.google.com/">Google Play Games data</a> or by deleting the app's Play Games data.</li><li><strong>Advertising:</strong> reset or delete your Advertising ID in Android Settings.</li></ul>
+<ul><li><strong>On your device:</strong> uninstalling Leblebi removes the local save.</li><li><strong>In the cloud:</strong> if you used Play Games, <strong>Delete account</strong> on the app's Account screen erases the saved game in your Google account along with the local copy; or delete the app's Play Games data from your Google account at <a href="https://myaccount.google.com/">Google Play Games data</a>.</li><li><strong>Advertising:</strong> reset or delete your Advertising ID in Android Settings.</li></ul>
 <p>You may also email <strong>tayfun.bilgi@gmail.com</strong> with any question about your data.</p>
 <h2>Changes</h2>
 <p>If this policy changes, the date at the top changes with it, and material changes will be noted in the app's store listing.</p>
