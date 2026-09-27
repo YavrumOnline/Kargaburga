@@ -1,0 +1,252 @@
+/* Kargaburga: words written on graph paper, the look of Leblebi's text pages.
+   The grid's lines fall on the page's centre line and every whole cell from it; the column is an
+   even number of cells wide, so its edges sit on lines. snap.js grows each .snap block to whole
+   cells so the next one starts on a line too. */
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --paper: #EBEBEB;
+  --ink: #2B2B2B;
+  --muted: #616161;
+  --line: 1.5px;
+  --cell: 36px;
+  --cols: 8;
+  --words: "Inter", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --prose: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+@media (min-width: 400px) { :root { --cell: 44px; } }
+@media (min-width: 760px) { :root { --cell: 48px; --cols: 14; } }
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font: 400 16px/1.55 var(--prose);
+  background-color: var(--paper);
+  background-image: url("/grid.svg");
+  background-size: var(--cell) var(--cell);
+  background-position: 50% calc(var(--cell) / -2);
+  -webkit-text-size-adjust: 100%;
+}
+@media (min-width: 760px) { body { font-size: 17px; } }
+
+.page {
+  width: calc(var(--cols) * var(--cell));
+  margin: 0 auto;
+  padding: var(--cell) 0 calc(2 * var(--cell));
+}
+
+a { color: inherit; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:focus-visible, .box:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+/* The paper is cut away under anything written on it. */
+.hole { background: var(--paper); }
+.gap { height: var(--cell); }
+
+.words { font-family: var(--words); font-weight: 700; letter-spacing: -0.01em; }
+
+/* A frame is a word's cell outlined in ink, like geri on the phone. */
+.box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--cell);
+  padding: 0 calc(var(--cell) / 3);
+  border: var(--line) solid var(--ink);
+  background: var(--paper);
+  font-family: var(--words);
+  font-weight: 700;
+  font-size: calc(var(--cell) * 0.42);
+  line-height: 1;
+  text-decoration: none;
+  color: var(--ink);
+  white-space: nowrap;
+}
+a.box:hover { background: var(--ink); color: var(--paper); }
+
+/* The top row: the crow and the studio's name, the other language on the right. */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: var(--cell);
+}
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--cell) / 4);
+  height: var(--cell);
+  padding-right: calc(var(--cell) / 4);
+  background: var(--paper);
+  text-decoration: none;
+  font-family: var(--words);
+  font-weight: 700;
+  font-size: calc(var(--cell) * 0.46);
+}
+.mark img { width: var(--cell); height: var(--cell); padding: calc(var(--cell) / 10); object-fit: contain; }
+
+/* The opening: the crow large, the name, one line. */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: var(--cell);
+}
+.hero .crow { width: calc(4 * var(--cell)); height: calc(4 * var(--cell)); object-fit: contain; }
+.hero h1 {
+  margin: var(--cell) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(2 * var(--cell));
+  font-family: var(--words);
+  font-weight: 700;
+  font-size: calc(var(--cell) * 1.1);
+  line-height: 1;
+  padding: 0 calc(var(--cell) / 2);
+  background: var(--paper);
+  border: var(--line) solid var(--ink);
+  letter-spacing: -0.02em;
+}
+.hero p {
+  margin: var(--cell) 0 0;
+  padding: calc(var(--cell) / 4) calc(var(--cell) / 2);
+  background: var(--paper);
+  font-size: 1.05em;
+}
+
+/* A section's label, a word in its own cell. */
+.label {
+  display: inline-block;
+  margin: 0;
+  height: var(--cell);
+  line-height: var(--cell);
+  padding: 0 calc(var(--cell) / 4);
+  background: var(--paper);
+  font-family: var(--words);
+  font-weight: 700;
+  font-size: calc(var(--cell) * 0.5);
+}
+
+/* A figure: capitals, small, muted, as under a word on the phone. */
+.figure {
+  font-family: var(--words);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.prose {
+  padding: calc(var(--cell) / 4) calc(var(--cell) / 4);
+  background: var(--paper);
+}
+.prose p, .prose ul { margin: 0 0 0.75em; }
+.prose p:last-child, .prose ul:last-child { margin-bottom: 0; }
+.prose ul { padding-left: 1.2em; }
+.prose h2 { margin: 1.5em 0 0.4em; font-family: var(--words); font-weight: 700; font-size: 1.1em; }
+.prose h2:first-child { margin-top: 0; }
+.prose h3 { margin: 1.4em 0 0.3em; }
+.prose table { border-collapse: collapse; width: 100%; font-size: 0.92em; margin: 0.5em 0 1em; }
+.prose th, .prose td { text-align: left; padding: 0.4em 0.5em; border-bottom: 1px solid #c8c8c8; vertical-align: top; }
+.prose th { color: var(--muted); }
+.prose code { font-size: 0.92em; }
+.prose .updated { color: var(--muted); }
+.prose .figure { margin: 1.6em 0 0.4em; }
+.prose .figure:first-child { margin-top: 0; }
+.table-wrap { overflow-x: auto; }
+
+/* A game: its board, outlined, with the icon, the name and what it is. */
+.game {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--cell);
+  padding: var(--cell);
+  border: var(--line) solid var(--ink);
+  background: var(--paper);
+}
+@media (min-width: 760px) {
+  .game { grid-template-columns: calc(2 * var(--cell)) 1fr; column-gap: var(--cell); }
+}
+.game img.icon { width: calc(2 * var(--cell)); height: calc(2 * var(--cell)); border-radius: 22%; display: block; }
+.game h3 { margin: 0; font-family: var(--words); font-weight: 700; font-size: calc(var(--cell) * 0.6); line-height: 1.1; }
+.game h3 a { text-decoration: none; }
+.game p { margin: calc(var(--cell) / 6) 0 0; }
+.game .links { grid-column: 1 / -1; }
+
+/* Screenshots stand on whole cells: three across on a wide page, two on a phone. */
+.shots {
+  display: grid;
+  grid-template-columns: repeat(2, calc(3 * var(--cell)));
+  justify-content: space-between;
+  margin-top: var(--cell);
+}
+.shots img {
+  display: block;
+  width: 100%;
+  height: calc(6 * var(--cell));
+  object-fit: cover;
+  border: var(--line) solid var(--ink);
+  background: var(--paper);
+}
+.shots img:nth-child(3) { display: none; }
+@media (min-width: 760px) {
+  .shots { grid-template-columns: repeat(3, calc(4 * var(--cell))); }
+  .shots img { height: calc(8 * var(--cell)); }
+  .shots img:nth-child(3) { display: block; }
+}
+
+/* The next game: a frame not yet filled, dashed like the board's unfound cells. */
+.next {
+  display: grid;
+  grid-template-columns: var(--cell) 1fr;
+  align-items: center;
+  column-gap: 0;
+  padding: calc(var(--cell) / 4) calc(var(--cell) / 2) calc(var(--cell) / 4) 0;
+  border: var(--line) dashed var(--ink);
+  background: var(--paper);
+}
+.next .dot { width: var(--cell); height: var(--cell); display: grid; place-items: center; }
+.next .dot::before { content: ""; width: calc(var(--cell) / 4); height: calc(var(--cell) / 4); border-radius: 50%; background: var(--ink); }
+.next p { margin: 0; }
+
+/* A game's own page: the name row, the store, the listing. */
+.title {
+  display: grid;
+  grid-template-columns: calc(2 * var(--cell)) 1fr;
+  column-gap: calc(var(--cell) / 2);
+  align-items: center;
+}
+.title img { width: calc(2 * var(--cell)); height: calc(2 * var(--cell)); border-radius: 22%; display: block; }
+.title h1 { margin: 0; font-family: var(--words); font-weight: 700; font-size: calc(var(--cell) * 0.9); line-height: 1; background: var(--paper); display: inline-block; padding: calc(var(--cell) / 8) calc(var(--cell) / 6); }
+.title p { margin: calc(var(--cell) / 6) 0 0; background: var(--paper); display: inline-block; padding: 0 calc(var(--cell) / 6); }
+
+/* Frames in a row keep a cell between them, and a row between rows. */
+.row { display: flex; flex-wrap: wrap; gap: var(--cell); }
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--cell);
+}
+footer .hole { padding: 0 calc(var(--cell) / 4); line-height: var(--cell); color: var(--muted); font-size: 0.9em; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (prefers-reduced-motion: no-preference) {
+  a.box { transition: background-color .12s, color .12s; }
+}
