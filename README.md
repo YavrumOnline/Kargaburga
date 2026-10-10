@@ -7,9 +7,12 @@ step (`vercel.json`). A push to `main` deploys.
 - `public/leblebi/`, `public/tr/leblebi/`: Leblebi's pages. Generated, never edited by hand: run
   `python tools/site/leblebi_site.py <this folder>` from the Leblebi repository. The game page is
   built from the Play listing, the privacy policy from `docs/PRIVACY.md`.
-- `public/site.css`, `public/grid.svg`, `public/snap.js`: the look, graph paper and words written on
-  it. `snap.js` grows blocks and frames to whole cells so they sit on the grid's lines.
-- `public/fonts/Inter-Bold.ttf`: Inter, SIL Open Font License 1.1, its licence beside it.
+- `public/site.css`, `public/reveal.js`: the look. Monochrome with one red, light or dark by the
+  visitor's system. `reveal.js` fades blocks marked `data-reveal` up as they scroll into view; without
+  it nothing is hidden.
+- `public/crow.svg`: the studio's mark. The pages draw it inline so it takes the page's ink, and
+  Leblebi's generator reads its paths from this file.
+- `public/fonts/Geist-Variable.woff2`: Geist, SIL Open Font License 1.1, its licence beside it.
 
 A new game gets `public/<game>/` and `public/tr/<game>/`, a card on both home pages, and its
 lines in `public/sitemap.xml`.

@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F4F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111113" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
 <title>Leblebi: Word Game</title>
 <meta name="description" content="Swipe letters to make words and fill the crossword. Daily puzzle, works offline.">
 <link rel="canonical" href="https://kargaburga.com/leblebi">
@@ -16,74 +23,84 @@
 <meta property="og:url" content="https://kargaburga.com/leblebi">
 <meta property="og:image" content="https://kargaburga.com/og/leblebi.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#EBEBEB">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preload" href="/fonts/Inter-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/site.css">
 </head>
 <body>
-<div class="page">
-
-<header class="top">
-  <a class="mark" href="/"><img src="/crow.svg" alt=""><span>kargaburga</span></a>
-  <a class="box" href="/tr/leblebi" hreflang="tr" lang="tr">türkçe</a>
+<a class="skip" href="#main">Skip to content</a>
+<header class="wrap bar">
+  <a class="brand" href="/"><svg viewBox="0 0 62.29 53.08" aria-hidden="true" focusable="false"><path d="M49.46,50.1c-.26.38-.02.91.44.95,6.66.63,18.09-9.84,9.05-13.79-8.25-3.6-15.57,5.16-15.57,5.16-.06.13-.23.08-.25-.06-.57-6.52,2.02-9.67,3.75-11.73.29-.35.37-.83.19-1.25l-1.61-3.86c-.25-.59-.94-.86-1.52-.6-11.63,5.27-13.8,17.27-14.07,20.97-.01.15-.25.15-.26,0-1.33-19.15,7.89-24.99,11.15-28.25.61-.61.63-1.37.28-2.26-.46-1.16-.96-2.06-1.34-3.15v-.02c-.33-.91-1.3-1.31-2.18-.92-8.95,4-11.97-1.49-11.42-3.88.84-3.66,6.84-6.2,12.3-2.91.46.27,1.04-.05,1.05-.58.03-1.12.06-1.59-.32-1.84-5.99-3.95-12.8-1.9-15.56,2.63-.22.36-.69.51-1.07.33C19.14,3.46,8.65,1.45.42,7.36c-.65.47-.52,1.48.23,1.76,9.11,3.48,12.07,5.84,15.28,11.1.55.91,1.05,1.03,1.22.43.1-.37.35-1.06.77-1.88.37-.71.76-1.15.76-1.15.27-.29.13-.56-.03-.8-3.26-5.18-9.55-7.77-12.46-8.63-.25-.07-.25-.42,0-.5,6.56-2.34,13.74.2,15.63,1.34.39.23.67.59.8,1.03.55,1.85,2.93,7.31,11.8,6.61.31-.02.48.34.26.56-12.39,12.28-9.76,28.77-8.07,34.1.2.64.71,1.14,1.37,1.23l3.58.51c.98.14,1.82-.64,1.82-1.63-.06-13.33,5.75-17.72,7.38-18.93.12-.09.27.04.22.18-1.92,4.95-1.55,8.51-.92,12.2.07.42.31.79.65,1.04l2.06,1.49c.4.29,1.03.2,1.22-.26,0,0,6.93-9.83,13.09-7.1,4.53,2.01-1.89,8.73-6.21,8.77-.34,0-.65.16-.85.44l-.56.82Z"/><path d="M35.26,5.36c-1.04-.46-2.32-1.06-4.55-.09s-2.86,2.67-2.08,3.88c1.15,1.79,5.03,1.94,6.93.17,2.15-2,.75-3.49-.3-3.95Z"/></svg><span>kargaburga</span></a>
+  <nav class="nav" aria-label="Kargaburga">
+    <a href="/leblebi" aria-current="page">Leblebi</a>
+    <a href="/tr/leblebi" hreflang="tr" lang="tr">Türkçe</a>
+  </nav>
 </header>
 
-<div class="gap"></div>
-
-<main>
-<section class="title snap">
-  <img src="/img/leblebi/icon.png" alt="" width="256" height="256">
+<main id="main" class="wrap">
+<section class="game-hero" aria-label="Leblebi">
   <div>
-    <h1>Leblebi</h1><br>
-    <p>Swipe letters to make words and fill the crossword. Daily puzzle, works offline.</p>
+    <img class="icon rise" src="/img/leblebi/icon.png" alt="" width="256" height="256">
+    <h1 class="rise" style="--i:1">Leblebi</h1>
+    <p class="lede rise" style="--i:2">Swipe letters to make words and fill the crossword. Daily puzzle, works offline.</p>
+    <div class="actions rise" style="--i:3"><a class="btn" href="https://play.google.com/store/apps/details?id=app.leblebi">Get it on Google Play</a></div>
+  </div>
+  <div class="fan rise" style="--i:2">
+    <img src="/img/leblebi/en-01-puzzle.webp" alt="A Leblebi puzzle: a crossword grid above a wheel of letters" width="480" height="960">
+    <img src="/img/leblebi/en-03-home.webp" alt="Leblebi&#x27;s home page" width="480" height="960">
+    <img src="/img/leblebi/en-05-complete.webp" alt="A finished Leblebi puzzle and its points" width="480" height="960">
   </div>
 </section>
-<div class="gap"></div>
-<div class="row"><a class="box" href="https://play.google.com/store/apps/details?id=app.leblebi">get it on google play</a></div>
-<div class="shots">
-    <img src="/img/leblebi/en-01-puzzle.webp" alt="A Leblebi puzzle: a crossword grid above a wheel of letters" width="480" height="960" loading="lazy">
-    <img src="/img/leblebi/en-03-home.webp" alt="Leblebi&#x27;s home page" width="480" height="960" loading="lazy">
-    <img src="/img/leblebi/en-05-complete.webp" alt="A finished Leblebi puzzle and its points" width="480" height="960" loading="lazy">
-</div>
-<div class="gap"></div>
-<section class="prose listing snap">
-    <p class="figure">HOW IT PLAYS</p>
-    <ul><li>Swipe the letter wheel to spell words</li><li>Grid words fill the crossword, and extra words score too</li><li>Stuck? Use a hint to reveal a letter</li><li>Clear the grid to bank your points and move on</li></ul>
-    <p class="figure">ALMOST 10,000 PUZZLES IN EVERY LANGUAGE</p>
-    <p>The grids grow as you go, and the words get rarer, so later puzzles become a real brain teaser. There is always another one waiting.</p>
-    <p class="figure">A DAILY PUZZLE</p>
-    <p>One special puzzle each day. It scores double points. Share your result with friends.</p>
-    <p class="figure">CALM ENOUGH TO PLAY ANYWHERE</p>
-    <p>Play to a gentle ambient soundscape: ocean, forest, wind, rain or a distant storm. Each one is generated while you play, so it never loops and never repeats itself. Or turn the sound off and play in silence.</p>
-    <p class="figure">A REAL DICTIONARY</p>
-    <p>Every word opens in the dictionary with its full meaning. Found a word you don&#x27;t know? That is the point. Read it and keep going.</p>
-    <p class="figure">MADE TO RESPECT YOU</p>
-    <ul><li>Plays as an offline word game, with every puzzle and definition on your phone</li><li>No account, no sign-up</li><li>No coins, no gems, no shop. Your points are a record, not a currency</li><li>Optional Google Play Games sign-in backs up your progress</li></ul>
-    <p class="figure">TWENTY-FIVE LANGUAGES</p>
-    <p>Play in Turkish, English, Bulgarian, Catalan, Czech, Danish, Dutch, Filipino, Finnish, French, German, Greek, Hungarian, Icelandic, Indonesian, Italian, Latvian, Lithuanian, Norwegian, Polish, Portuguese (Portugal), Portuguese (Brazil), Russian, Spanish or Swedish. Each has its own full dictionary and almost 10,000 puzzles, all included in the app.</p>
-    <p>Leblebi is free and shows ads. Hints are earned by watching an optional video, and are never required to keep playing.</p>
+<section class="section plain">
+  <div class="features">
+    <div class="feature" data-reveal>
+      <h2>HOW IT PLAYS</h2>
+      <ul><li>Swipe the letter wheel to spell words</li><li>Grid words fill the crossword, and extra words score too</li><li>Stuck? Use a hint to reveal a letter</li><li>Clear the grid to bank your points and move on</li></ul>
+    </div>
+    <div class="feature" data-reveal>
+      <h2>ALMOST 10,000 PUZZLES IN EVERY LANGUAGE</h2>
+      <p>The grids grow as you go, and the words get rarer, so later puzzles become a real brain teaser. There is always another one waiting.</p>
+    </div>
+    <div class="feature" data-reveal>
+      <h2>A DAILY PUZZLE</h2>
+      <p>One special puzzle each day. It scores double points. Share your result with friends.</p>
+    </div>
+    <div class="feature" data-reveal>
+      <h2>CALM ENOUGH TO PLAY ANYWHERE</h2>
+      <p>Play to a gentle ambient soundscape: ocean, forest, wind, rain or a distant storm. Each one is generated while you play, so it never loops and never repeats itself. Or turn the sound off and play in silence.</p>
+    </div>
+    <div class="feature" data-reveal>
+      <h2>A REAL DICTIONARY</h2>
+      <p>Every word opens in the dictionary with its full meaning. Found a word you don&#x27;t know? That is the point. Read it and keep going.</p>
+    </div>
+    <div class="feature" data-reveal>
+      <h2>MADE TO RESPECT YOU</h2>
+      <ul><li>Plays as an offline word game, with every puzzle and definition on your phone</li><li>No account, no sign-up</li><li>No coins, no gems, no shop. Your points are a record, not a currency</li><li>Optional Google Play Games sign-in backs up your progress</li></ul>
+    </div>
+    <div class="feature" data-reveal>
+      <h2>TWENTY-FIVE LANGUAGES</h2>
+      <p>Play in Turkish, English, Bulgarian, Catalan, Czech, Danish, Dutch, Filipino, Finnish, French, German, Greek, Hungarian, Icelandic, Indonesian, Italian, Latvian, Lithuanian, Norwegian, Polish, Portuguese (Portugal), Portuguese (Brazil), Russian, Spanish or Swedish. Each has its own full dictionary and almost 10,000 puzzles, all included in the app.</p>
+    </div>
+  </div>
+  <p class="closing" data-reveal>Leblebi is free and shows ads. Hints are earned by watching an optional video, and are never required to keep playing.</p>
 </section>
-<div class="gap"></div>
-<section class="snap" aria-labelledby="docs">
-  <h2 class="label" id="docs">documents</h2>
-  <div class="row">
-    <a class="box" href="/leblebi/privacy">privacy policy</a>
-    <a class="box" href="/leblebi/terms">terms of service</a>
+<section class="section" aria-labelledby="docs">
+  <h2 class="h2" id="docs" data-reveal>Documents</h2>
+  <div class="docs" data-reveal>
+    <a class="chip" href="/leblebi/privacy">Privacy policy</a>
+    <a class="chip" href="/leblebi/terms">Terms of service</a>
   </div>
 </section>
 </main>
 
-<div class="gap"></div>
-
-<footer>
-  <span class="hole">© 2026 Kargaburga · <a href="mailto:tayfun.bilgi@gmail.com">tayfun.bilgi@gmail.com</a></span>
-  <a class="box" href="/tr/leblebi" hreflang="tr" lang="tr">türkçe</a>
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Kargaburga</span>
+    <nav aria-label="Kargaburga">
+      <a href="/leblebi/privacy">Leblebi privacy policy</a>
+      <a href="/leblebi/terms">Leblebi terms</a>
+      <a href="mailto:tayfun.bilgi@gmail.com">tayfun.bilgi@gmail.com</a>
+      <a href="/tr/leblebi" hreflang="tr" lang="tr">Türkçe</a>
+    </nav>
+  </div>
 </footer>
-
-</div>
-<script src="/snap.js" defer></script>
+<script src="/reveal.js" defer></script>
 </body>
 </html>
