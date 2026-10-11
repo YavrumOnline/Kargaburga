@@ -37,15 +37,15 @@
 <p class="updated">Last updated: 6 October 2026</p>
 <p>This policy explains what Leblebi ("the app") does with data. It was written against what the app's code actually does, and every claim in it is checkable against the source.</p>
 <p>Leblebi is published by <strong>Kargaburga</strong>. Contact: <strong>tayfun.bilgi@gmail.com</strong></p>
-<h2>The short version</h2>
+<h2 id="the-short-version">The short version</h2>
 <p>Leblebi has no account of its own, never asks you to type your name or email, and its own code contains no analytics or crash-reporting service. One ad network it uses, Yandex Ads, includes Yandex's AppMetrica library to measure its ads (see Advertising). Your puzzle progress is stored <strong>on your device</strong>.</p>
 <p>Two optional things involve other companies: <strong>advertising</strong>, and <strong>Google Play Games</strong> if you choose to sign in. If you do sign in, the app shows your Play Games name on your own Home and Account screens and backs up your progress to your Google account — and sends neither to anyone.</p>
-<h2>What Leblebi stores on your device</h2>
+<h2 id="what-leblebi-stores-on-your-device">What Leblebi stores on your device</h2>
 <p>The app saves your game progress locally so you can close it and come back. That save contains:</p>
 <ul><li>which puzzle you are on, your points total, and how many puzzles you have completed</li><li>which days you completed the daily puzzle</li><li>the puzzle you are part-way through, including words found and hints used</li><li>your settings: language, the sound level, haptics on/off, background motion, which ambient sound you chose, whether reminders are on and at what time</li><li>which of the game's one-time tips you have already seen</li></ul>
 <p>It contains <strong>no name, no email address, no contacts, no location, and no device identifier</strong>.</p>
 <p>Puzzles and dictionary definitions are included inside the app, so playing does not require an internet connection and nothing about which words you look up is ever transmitted.</p>
-<h2>Google Play Games Services — optional</h2>
+<h2 id="google-play-games-services-optional">Google Play Games Services — optional</h2>
 <p>If you sign in to Google Play Games, the app uses it for two purposes.</p>
 <p><strong>1. Backing up your progress.</strong> The save described above is written to Google's Saved Games, so your progress survives a lost or replaced phone. Only that progress data is read and written.</p>
 <p><strong>2. Showing you who is signed in.</strong> The Home and Account screens display your <strong>Play Games display name</strong>, exactly as you set it. It is:</p>
@@ -54,7 +54,7 @@
 <p>The app does <strong>not</strong> read your profile photo, your friends list, your achievements, or your email address.</p>
 <p>Signing in is optional. Declining it costs you cloud backup and the name on the screen, and nothing else. <strong>Play without an account</strong> on the Account screen sets the account aside on this device; <strong>Delete account</strong> erases your progress on this device and the copy in your Google account, and then sets the account aside.</p>
 <p>Google's handling of your Play Games account is governed by <a href="https://policies.google.com/privacy">Google's Privacy Policy</a>.</p>
-<h2>Advertising</h2>
+<h2 id="advertising">Advertising</h2>
 <p>Leblebi is free and shows ads. There are two places: a full-screen ad after finishing a puzzle, and an optional video you can choose to watch in exchange for a hint. <strong>You are never required to watch an ad to keep playing.</strong></p>
 <p>Ads are delivered by <strong>Unity LevelPlay</strong> (ironSource mediation), by Unity Technologies — <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">privacy policy</a>.</p>
 <p>LevelPlay chooses between several ad networks, and the app ships the adapter for each of them. Any of these may serve an ad and may therefore receive the data listed below:</p>
@@ -65,24 +65,24 @@
 <ul><li>your device's <strong>Advertising ID</strong>, a resettable identifier you control in Android Settings</li><li><strong>device and app information</strong> — model, operating system version, language, and country</li><li>your <strong>IP address</strong>, from which an approximate region may be inferred</li><li><strong>which ads you were shown and whether you interacted with them</strong></li></ul>
 <p>This is used to select ads, to limit how often the same ad repeats, to measure whether ads worked, and to detect fraud. <strong>Leblebi itself never receives this data</strong>, and the app's own developer sees only aggregate earnings reports.</p>
 <p><strong>You can reset or delete your Advertising ID at any time</strong> in Android Settings under Privacy → Ads. Deleting it stops personalised advertising; the app will still work.</p>
-<h2>Personalised ads, everywhere</h2>
+<h2 id="personalised-ads-everywhere">Personalised ads, everywhere</h2>
 <p><strong>You can turn personalised ads off in every country</strong>, from <em>ad choices</em> on the app's Profile screen. Where the law requires a consent form, that row opens it (below). Everywhere else it is a switch: off, the app tells every ad partner that you do not consent to personalised advertising and opt out of the sale or sharing of your personal information, and they show generic ads instead. The choice is sent every time the app starts, before any ad service starts, and resetting your progress does not turn it back on.</p>
-<h2>Consent, where the law requires it</h2>
+<h2 id="consent-where-the-law-requires-it">Consent, where the law requires it</h2>
 <p>Where the GDPR, UK GDPR or similar law applies, the app shows Google's <strong>User Messaging Platform</strong> consent form before any ad service starts, and asks you to choose. You can reopen that choice at any time from <em>ad choices</em> on the app's Profile screen.</p>
 <p><strong>If you decline, your choice is passed to every ad partner</strong> in the standard consent signal the form writes, and they may then show only limited, non-personalised ads, or none. The optional video that funds a hint may therefore still play. Nothing else about the game changes.</p>
 <p><strong>Changing your mind takes effect for the ads that follow.</strong> If you reopen the choice and decline, the new choice is passed on in the same way; if the form can no longer allow ads at all, the app stops requesting them for the rest of the session.</p>
-<h2>Reminders</h2>
+<h2 id="reminders">Reminders</h2>
 <p>Settings has a reminder switch, off by default. Switched on, the app schedules one notification a day on your device, at the time you choose, saying that today's daily puzzle is waiting. It is scheduled locally, uses no server, and sends nothing anywhere.</p>
-<h2>Permissions</h2>
+<h2 id="permissions">Permissions</h2>
 <p>Leblebi requests two Android permissions of its own:</p>
 <ul><li><strong><code>VIBRATE</code></strong> — the small tap you feel when you touch a control. You can switch it off in Settings. It works entirely on your device and sends nothing anywhere.</li><li><strong><code>POST_NOTIFICATIONS</code></strong> — the reminder above, only if you switch it on.</li></ul>
 <p>Network access comes from the advertising and Play Games components described above.</p>
-<h2>Children</h2>
+<h2 id="children">Children</h2>
 <p>Leblebi is a word and dictionary game and contains no content directed at children, no chat, and no way for players to contact each other. It is not knowingly directed at children under 13, and the developer does not knowingly collect personal information from them.</p>
-<h2>Data deletion</h2>
+<h2 id="data-deletion">Data deletion</h2>
 <ul><li><strong>On your device:</strong> uninstalling Leblebi removes the local save.</li><li><strong>In the cloud:</strong> if you used Play Games, <strong>Delete account</strong> on the app's Account screen deletes the saved game in your Google account and, once Google confirms it is gone, the local copy; if Google cannot be reached, nothing is deleted and the app says so. Or delete the app's Play Games data from your Google account at <a href="https://myaccount.google.com/">Google Play Games data</a>.</li><li><strong>Advertising:</strong> reset or delete your Advertising ID in Android Settings.</li></ul>
 <p>You may also email <strong>tayfun.bilgi@gmail.com</strong> with any question about your data.</p>
-<h2>Changes</h2>
+<h2 id="changes">Changes</h2>
 <p>If this policy changes, the date at the top changes with it, and material changes will be noted in the app's store listing.</p>
   </div>
   <div class="actions back"><a class="more" href="/leblebi">Back to Leblebi <span aria-hidden="true">→</span></a></div>
